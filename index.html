@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="系統五級對對碰：專案系統開發實務課堂練習">
+  <title>系統五級對對碰｜課堂練習</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page-shell">
+    <header class="hero" aria-labelledby="page-title">
+      <div class="hero-sky" aria-hidden="true"></div>
+      <div class="title-sign">
+        <span class="title-sign__pin" aria-hidden="true"></span>
+        <p class="eyebrow">專案系統開發實務・課堂練習</p>
+        <h1 id="page-title">系統五級對對碰</h1>
+        <p class="subtitle">看需求、想一想，把便條紙拖到對應的建築。</p>
+      </div>
+    </header>
+
+    <section class="how-to" aria-label="玩法說明">
+      <p><strong>闖關方式：</strong>左邊選一張，拖到右邊對應的建築。第一次答錯扣 10 分，之後可重試到成功。</p>
+    </section>
+
+    <section class="game-panel" aria-label="系統層級配對遊戲">
+      <div class="game-heading">
+        <div>
+          <p class="section-kicker">專案系統開發實務・配對挑戰</p>
+          <h2>看需求，找對等級</h2>
+        </div>
+        <div class="game-stats">
+          <label class="name-field" for="studentNameInput">
+            <span>學生姓名</span>
+            <input id="studentNameInput" type="text" maxlength="20" autocomplete="name" placeholder="請輸入姓名">
+          </label>
+          <div class="score-card" aria-label="目前得分">
+            <span>目前得分</span>
+            <strong id="scoreText">100</strong><em>/ 100 分</em>
+          </div>
+          <div class="progress-wrap" aria-label="完成進度">
+            <span id="progressText">完成 0 / 5</span>
+            <div class="progress-track"><span id="progressBar"></span></div>
+          </div>
+        </div>
+      </div>
+
+      <p id="liveMessage" class="live-message" role="status" aria-live="polite">左邊選一張，拖到右邊對應的建築。</p>
+
+      <div class="game-grid">
+        <aside class="cards-column" aria-label="未配對需求卡">
+          <div class="cards-column__heading">
+            <div>
+              <p class="section-kicker">第一步：選一張需求</p>
+              <h2>需求便條紙</h2>
+            </div>
+          </div>
+          <div id="cards" class="cards" aria-live="polite"></div>
+          <div id="cardsEmpty" class="cards-empty" hidden>
+            <span aria-hidden="true">✦</span>
+            <p>五張便條紙都送達囉！</p>
+          </div>
+        </aside>
+
+        <section class="levels-column" aria-label="系統的五個層級">
+          <div class="levels-column__heading">
+            <p class="section-kicker">第二步：拖到對應建築</p>
+            <h2>系統的五個等級</h2>
+          </div>
+          <div id="levels" class="levels"></div>
+        </section>
+      </div>
+
+    </section>
+  </main>
+
+  <div id="dragGhost" class="drag-ghost" aria-hidden="true"></div>
+
+  <dialog id="nameDialog" class="name-dialog" aria-labelledby="nameTitle">
+    <form id="nameForm" class="name-dialog__content" novalidate>
+      <p class="name-dialog__badge">準備開始</p>
+      <h2 id="nameTitle">先寫下你的名字</h2>
+      <label for="initialNameInput">姓名
+        <input id="initialNameInput" type="text" maxlength="20" autocomplete="name" placeholder="例如：王小明" required>
+      </label>
+      <p id="nameError" class="name-error" role="alert" hidden>請先輸入姓名。</p>
+      <button type="submit">開始挑戰</button>
+    </form>
+  </dialog>
+
+  <dialog id="resultDialog" class="result-dialog" aria-labelledby="resultTitle">
+    <div class="result-dialog__content">
+      <p class="result-dialog__badge">五題完成</p>
+      <div class="result-dialog__stamp" aria-hidden="true">完成</div>
+      <h2 id="resultTitle">本次作答紀錄</h2>
+      <p id="resultSummary" class="result-dialog__summary"></p>
+      <div id="answerRecord" class="answer-record" aria-label="作答紀錄"></div>
+      <button id="closeResultButton" class="result-close" type="button">關閉</button>
+    </div>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
